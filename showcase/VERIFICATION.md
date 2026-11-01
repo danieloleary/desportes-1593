@@ -57,8 +57,10 @@ node --test showcase/tests/source-integrity.test.cjs
 python3 -I -B showcase/package_verifier.py --check
 ```
 
-The five Node.js groups check exact reader text, source hashes, local links,
-runtime boundaries, and download/result bindings. Rebuild the archive with
+The six Node.js groups check exact reader text, source hashes, local links,
+runtime boundaries, download bindings, and a fresh scorer run. The last group
+compares published input/scorer/manifest hashes, run identity, result fields,
+and placeholder coverage against the actual source files and new calculation. Rebuild the archive with
 `python3 -I -B showcase/package_verifier.py`. It includes only thirteen explicit
 files, checks their inventory, and uses fixed ZIP metadata and uncompressed
 entries so the same source bytes reproduce the same archive hash.

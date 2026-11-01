@@ -39,3 +39,18 @@ test('download bytes match the published SHA-256 record',()=>{
   const [expected,name]=line.split(/\s+/);assert.equal(name,'desportes-saved-verifier.zip');assert.equal(expected,hash(fs.readFileSync(path.join(dir,name))));
   const record=JSON.parse(fs.readFileSync(path.join(site,'evidence/saved-score.json')));assert.equal(record.glyph.edit_errors,4);assert.equal(record.glyph.reference_length,1301);assert.equal(record.letter.edit_errors,23);assert.equal(record.letter.reference_length,1369);assert.equal(record.coverage.excluded_letter_name_placeholders,4);
 });
+
+test('published score evidence matches a fresh scorer run and all source identities',()=>{
+  const record=JSON.parse(fs.readFileSync(path.join(site,'evidence/saved-score.json')));
+  const pkg=path.join(root,'contrib/saved-score');
+  const fresh=JSON.parse(require('node:child_process').execFileSync('python3',['-I','-B',path.join(pkg,'score_saved.py'),'--gold',path.join(pkg,'inputs/f179r.txt'),'--machine',path.join(pkg,'inputs/f179r_machine_blind.txt'),'--manifest',path.join(pkg,'manifest.json')],{encoding:'utf8'}));
+  assert.equal(record.method,fresh.method);assert.equal(record.upstream_commit,fresh.commit);assert.equal(record.run_id,fresh.run_id);
+  assert.deepEqual(record.inputs_sha256,fresh.inputs_sha256);
+  assert.equal(record.inputs_sha256.gold,hash(fs.readFileSync(path.join(pkg,'inputs/f179r.txt'))));
+  assert.equal(record.inputs_sha256.machine,hash(fs.readFileSync(path.join(pkg,'inputs/f179r_machine_blind.txt'))));
+  assert.equal(record.manifest_sha256,hash(fs.readFileSync(path.join(pkg,'manifest.json'))));assert.equal(record.manifest_sha256,fresh.manifest_sha256);
+  assert.equal(record.scorer_sha256,hash(fs.readFileSync(path.join(pkg,'score_saved.py'))));assert.equal(record.scorer_sha256,fresh.scorer_sha256);
+  for(const kind of ['glyph','letter'])for(const field of Object.keys(record[kind]))assert.equal(record[kind][field],fresh.results[kind][field]);
+  assert.equal(record.coverage.excluded_letter_name_placeholders,fresh.results.coverage.gold_name_placeholders);
+  assert.equal(record.coverage.name_identity_accuracy,fresh.results.coverage.name_identity_accuracy);
+});

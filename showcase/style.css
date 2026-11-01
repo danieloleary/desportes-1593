@@ -12,3 +12,8 @@ dialog{width:min(950px,94vw);max-height:90vh;padding:28px 32px;border:1px solid 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .verification-links{display:grid;gap:10px;font:11px/1.7 var(--sans)}.verification-links a{color:var(--accent)}
+
+/* Review follow-up: keep substantive credit and qualifications readable. */
+.credit{font-size:13px}.folio figcaption{font-size:11px}.work-grid p.scope{font-size:12px}
+.reader-note{font-size:12px}.small-note{font-size:12px}nav a{display:inline-flex;align-items:center;min-height:32px}
+@media(max-width:650px){h1{font-size:clamp(50px,14vw,66px);letter-spacing:-2px}.hero{padding-top:28px;gap:28px}.credit{font-size:12px}.reader-note{font-size:12px}nav{font-size:12px}}
