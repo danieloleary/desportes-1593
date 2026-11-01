@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="580" viewBox="0 0 1440 580" role="img" aria-labelledby="title desc">
+<title id="title">Desportes 1593, Reloaded</title><desc id="desc">Dan O’Leary’s reading room, score verifier and focused decoder fix. Original research by Paolo Rosson with Claude, using Satoshi Tomokiyo’s key.</desc>
+<rect width="1440" height="580" fill="#f6f1e6"/><path d="M60 80H1380M60 505H1380" stroke="#cfc7b6"/>
+<text x="60" y="52" font-family="Georgia,serif" font-size="27" fill="#25383b">Desportes <tspan fill="#8f4d2f" font-style="italic">1593</tspan></text>
+<text x="1380" y="49" text-anchor="end" font-family="Arial,sans-serif" font-size="12" letter-spacing="3" fill="#64706b">RELOADED · DAN O’LEARY’S CONTRIBUTION</text>
+<text x="60" y="142" font-family="Arial,sans-serif" font-size="12" letter-spacing="3" fill="#64706b">PARIS → ROME · JULY 1593</text>
+<text x="55" y="255" font-family="Georgia,serif" font-size="101" fill="#25383b">Written in <tspan fill="#8f4d2f" font-style="italic">code.</tspan></text>
+<text x="55" y="362" font-family="Georgia,serif" font-size="101" fill="#25383b">Open to read.</text>
+<text x="60" y="434" font-family="Arial,sans-serif" font-size="17" fill="#64706b">Two letters. A reading room. Work you can check.</text>
+<rect x="1030" y="125" width="310" height="325" fill="#efe6d3" stroke="#d7c9ae"/><rect x="1042" y="137" width="286" height="301" fill="none" stroke="#c9b994"/>
+<text x="1060" y="178" font-family="Arial,sans-serif" font-size="10" letter-spacing="2" fill="#726a58">FROM THE PUBLISHED READING</text>
+<text x="1060" y="258" font-family="Georgia,serif" font-size="33" font-style="italic" fill="#25383b">nostre oncle</text>
+<text x="1060" y="301" font-family="Georgia,serif" font-size="25" font-style="italic" fill="#8f4d2f">our uncle</text>
+<text x="1060" y="367" font-family="Arial,sans-serif" font-size="11" fill="#726a58">Folio 189 · identity still open</text>
+<text x="1060" y="403" font-family="Arial,sans-serif" font-size="9" fill="#726a58">Typeset excerpt, not a manuscript scan.</text>
+<text x="60" y="543" font-family="Arial,sans-serif" font-size="12" fill="#64706b">Original research: Paolo Rosson with Claude (Anthropic). Cipher key: Satoshi Tomokiyo.</text>
+</svg>

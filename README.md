@@ -1,173 +1,108 @@
-# Two cipher letters of July 1593, read for the first time
+[![Desportes 1593 Reloaded. Two letters. A reading room. Work you can check.](showcase/assets/cover.svg)](#open-the-showcase)
 
-A first reading of two enciphered letters from the Catholic League, written in Paris on 22 July 1593, three days
-before Henri IV abjured Protestantism.
+# Desportes 1593, Reloaded
 
-**Part of a larger set.** Nine results of the same project, with a map of every key, reading and image, are in
-[pangoleen/cipher-readings](https://github.com/pangoleen/cipher-readings) (start with its
-[GUIDE.md](https://github.com/pangoleen/cipher-readings/blob/main/GUIDE.md)).
+**Dan O’Leary’s contribution:** a reading room, an offline score verifier, and a
+focused decoder fix proposed upstream. Built with Codex.
 
-| Letter | Shelfmark | State before | State now |
-|---|---|---|---|
-| Desportes to Girolamo Frachetta | Paris, BnF, ms. français 3984, f. 189 | "Undeciphered" | [first reading and translation](reading/f189.md) |
-| Desportes to Pietro Aldobrandini, the Pope's nephew | BnF, ms. français 3984, f. 186 | "Enciphered passages are undeciphered" | [first reading and translation of the cipher passages](reading/f186.md) |
+The original research, readings, and English translations are by **Paolo Rosson
+with Claude (Anthropic)**, using **Satoshi Tomokiyo’s cipher key** and building on
+Daniel Bourdeau’s earlier work. [Original research README](README_UPSTREAM.md).
 
-**Status: first reading, version 0.2, 1 October 2026.** Every line was checked against the page image by the model
-that made the reading. No palaeographer has checked it yet. Most signs for persons are resolved from the deciphered
-sister letters (the Pope, the King of Navarre, Mayenne, the King of Spain, the Legate, Guise). A few signs and all
-cover names ("nostre oncle", "l'homme de la chesne", "l'homme du colege", "docteur Gratian") are open.
-Corrections are welcome: please open an issue.
+## Open the showcase
 
-## What the letters say
+[Download the fork ZIP](https://github.com/danieloleary/desportes-1593/archive/refs/heads/main.zip), unzip it, and open **showcase/index.html**. The reader works offline. GitHub displays the HTML as source; no public web-hosted demo is configured.
 
-The writer is an agent of the Duke of Mayenne, head of the League. He writes to Rome in the week when the League's
-cause turns.
+For a local server, use Python 3.10 or later from the repository root:
 
-- To Aldobrandini: the enemy (Henri of Navarre) wins over many who were against him "by the show he makes of
-  wishing to become a Catholic, **and on Sunday he is to go to Mass**". Spain wants the League to elect a king, but
-  its army "has done nothing but stay on the frontier". Everyone is "tired of serving as a tale for all
-  Christendom".
-- To Aldobrandini again: the Legate "has shown himself their partisan, to tear apart our poor state", and Mayenne
-  was patient to the point of "being willing to accept Monsieur [de Guise] for king, provided he was shown the means
-  to defend him".
-- To Frachetta: "I hold that we shall have the truce within a few days." The journey of an envoy "has made [the King
-  of Navarre] change religion". The papal legate "has done what he could to cover the Spaniard" and "has neglected
-  the service of his master, to the point of not delivering a single one of our briefs", working instead "to hasten
-  the dismemberment of our state".
+```sh
+python3 showcase/serve.py
+```
 
-Henri IV abjured and heard Mass on Sunday 25 July 1593. The general truce followed on 31 July.
+Open **http://127.0.0.1:4193/showcase/**. Read either letter in English or French,
+follow its source, and inspect what this fork adds. No install, account, model,
+or network request is needed for the local reader. External source links need
+internet access. You can also open `showcase/index.html` directly.
 
-## Why nobody had read them
+<details>
+<summary>See the desktop and mobile interface</summary>
 
-The cipher was not the obstacle. Satoshi Tomokiyo reconstructed it from sister letters: eleven signs, each of which
-stands for two letters, plus signs for common words and for names
-([cryptiana, "A Polyphonic Substitution Cipher of the Catholic League"](http://cryptiana.web.fc2.com/code/mayenne.htm)).
+![Desktop reading-room showcase](showcase/assets/preview-desktop.png)
 
-The obstacle was the handwriting. The two letters hold about 5,000 small drawn signs. Because each sign has two
-values, a wrong sign damages the words around it. An attempt in September 2026 (D. Bourdeau, `cyphersolver`) read
-73 to 79 % of the signs and concluded that more than 90 % is needed.
+<img src="showcase/assets/preview-mobile.png" width="300" alt="Mobile showcase with the primary reading action and original-research credit">
 
-The royal office that intercepted the letters did not read them either. Its register of 1593 says of the letter to
-Aldobrandini that "l'on n'a eu loisir encores de deschiffrer", and of the letter to Frachetta: "qui n'a non plus
-encore esté deschiffrée" (BnF, ms. français 3983, f. 141v, entries 13 and 14;
-[image](images/fr3983_f141v_entries_13_14.jpg)). The back of f. 189 carries the file number 14 and the same note
-([image](images/f189v_endorsement.jpg)).
+These captures show the actual interface. The typeset excerpt is not a manuscript scan.
+</details>
 
-## How the reading was made
+## What this fork adds
 
-1. **A larger answer key.** The office deciphered two sister letters in 1593, and the sheets are bound in the same
-   volume (f. 177 for f. 176, f. 184-185 for f. 188). We transcribed the old decipherment of f. 177 (74 lines) and
-   aligned both sister letters with their cipher, sign by sign. Result: 112 lines and 6,794 labelled signs in the
-   same hand ([gold/](gold/)). The earlier attempt had about 1,100.
-2. **Corrected references.** The cipher spells words differently from the office's clean copy ("espagnolz",
-   "fist"). The reference text was corrected to the cipher's own spelling.
-3. **A line recogniser.** A model reads a whole line of signs, trained on the labelled lines.
-4. **A decoder.** It chooses between the two letters of each sign with a model of period French and a lexicon of
-   77,004 word forms.
-
-## How good is it
-
-Measured on lines that were held back from training (482 signs, 505 letters, read by eye before any model existed):
-
-| Measure | Earlier attempt | This work |
+| Contribution | Where to start | Status |
 |---|---|---|
-| Signs read correctly | 73 to 79 % | 98.5 % |
-| Letters correct after decoding | 30 to 40 % | 95.6 % |
+| Reading room and landing page | [Showcase source](showcase/) | Included in this fork |
+| Independent saved-artifact scorer | [Run the verifier](contrib/saved-score/README.md) | Offline code and tests included |
+| Decoder history fix and regressions | [Upstream PR #1](https://github.com/pangoleen/desportes-1593/pull/1) | Draft, open and unmerged as checked November 1, 2026 |
+| Scope and remaining work | [Contribution ledger](CONTRIBUTIONS.md) | Separates software checks from manuscript evidence |
 
-A later blind test on a page found afterwards (f. 179r, 21 lines, checked against the office's decipherment of
-1593) gave 99.7 % of signs and 98.3 % of letters.
+The draft PR is separate from this showcase branch. Original upstream code,
+readings, labels, evidence, and image files remain unchanged.
 
-A control with planted errors shows that each 1 % of sign error costs about 1.5 % of letters. Details are in
-[evidence/accuracy.md](evidence/accuracy.md) and in the full work log, [evidence/worklog.md](evidence/worklog.md).
+## Check the saved scores
 
-## Is the reading new
+[Download the 13-file verifier ZIP](https://github.com/danieloleary/desportes-1593/raw/refs/heads/main/showcase/downloads/desportes-saved-verifier.zip) · [SHA-256 checksums](showcase/downloads/SHA256SUMS.txt) · [Exact result and reproduction](showcase/VERIFICATION.md).
 
-We looked for an earlier reading and found none. What was checked, and what was not, is in:
 
-- [prior_art/community.md](prior_art/community.md): the codebreaking community and 2026 projects.
-- [prior_art/scholarship.md](prior_art/scholarship.md): catalogues, editions and historical literature.
-- [prior_art/volume.md](prior_art/volume.md): the manuscript volume itself and its neighbours, page by page.
-- [evidence/register_1593.md](evidence/register_1593.md): the royal office's own notes that the letters were not
-  deciphered.
+The checker compares two public files for folio 179. It reproduces **4 edits /
+1,301 glyphs** and **23 edits / 1,369 letters**. Four unresolved `#` name/title
+placeholders are excluded from letter scoring.
 
-The office that intercepted the letters noted three times that it had not deciphered them: on the back of each
-letter (f. 187v: "non encore deschiffree"; f. 189v) and in its register (ms. français 3983, f. 141v).
+Keep the preview in one terminal. Run these standard-library tests in another:
 
-Open gaps, stated plainly:
+```sh
+python3 -B -m unittest discover -s contrib/saved-score -p test_score_saved.py -v
+```
 
-- The sister letter to the Pope is marked "Duplicata". A first copy of each dispatch may have left Paris by another
-  route. If one reached Rome, its addressee read it there in 1593. No such copy or reading is known.
+Write a report to a fresh output filename:
 
-- The Archivo General de Simancas (Estado, legajos 961 and 963) holds copies of letters that Frachetta gave to the
-  Spanish ambassador in September 1593. Nobody has checked whether the letter of 22 July is among them.
-- The Vatican and Aldobrandini archives were not checked.
-- Several printed works could be searched only in part.
+```sh
+python3 -I -B contrib/saved-score/score_saved.py \
+  --gold contrib/saved-score/inputs/f179r.txt \
+  --machine contrib/saved-score/inputs/f179r_machine_blind.txt \
+  --manifest contrib/saved-score/manifest.json \
+  --output /tmp/desportes-saved-report.json
+```
 
-## Who wrote the letters
+An existing output is refused. [Method and limits](contrib/saved-score/METHOD.md).
+With Node.js 18 or later, check source integrity and links:
 
-The 1593 register calls the writer "Desportes". The office wrote "Baudouyn Desportes" on its decipherments
-(f. 178v, f. 185v), and the BnF catalogue names him "Baudouin-Desportes". Satoshi Tomokiyo holds that Baudouin is
-right (October 2026). One more fact supports this: Mayenne's letter of 4 March 1593 to the commandeur de Diou, in
-this same cipher, is countersigned "Baudouyn" (BnF, ms. français 3983, f. 109v). So Mayenne's secretary Baudouin
-worked with this cipher.
+```sh
+node --test showcase/tests/source-integrity.test.cjs
+python3 -I -B showcase/package_verifier.py --check
+```
 
-Part of the literature (Lavaud 1936, Drouot 1937) keeps this man apart from Thibault Desportes, sieur de
-Bévilliers, brother of the poet Philippe Desportes and envoy of Mayenne to Rome. The reply of the bishop of Lisieux
-is addressed to "Desportes Sr de Beuvillier" (f. 274v), and an earlier version of this file preferred Thibault for
-that reason. The point stays open, and a comparison of hands would settle it. See
-[prior_art/scholarship.md](prior_art/scholarship.md).
+**Saved-file agreement is not independent manuscript accuracy.** The reference
+was made with model assistance. These checks do not reproduce image recognition,
+prove blinding, identify the remaining people, or establish a new decipherment.
 
-## Follow-up of 3 October 2026
+## Find the research
 
-S. Tomokiyo published this reading on 3 October 2026 and asked two questions
-([cryptiana, "An Intercepted Report of Henry IV's Upcoming Attendance at Mass in a Polyphonic Cipher"](https://cryptiana.web.fc2.com/code/polyphonic1593.htm)).
+- [French readings and published English translations](reading/).
+- [Original accuracy report](evidence/accuracy.md), [labels](gold/), and [code](code/).
+- [Original research README](README_UPSTREAM.md) and [wider research guide](https://github.com/pangoleen/cipher-readings/blob/main/GUIDE.md).
+- [Contributing](CONTRIBUTING.md) and [credits and provenance](showcase/ATTRIBUTION.md).
 
-- **Do the two letters add something to the letters that the office read in 1593?**
-  [reading/comparison.md](reading/comparison.md). In short: the forecast of the conversion on Sunday is not new.
-  The office read it in the letter to Lisieux ("Il se doibt faire cath. dimanche", f. 184r). Seven passages are in
-  the two unread letters only.
-- **Who deciphered the other letters in 1593?** [evidence/decipherer_1593.md](evidence/decipherer_1593.md). In
-  short: the office read this cipher from the letters of 27 October 1592 onward; its clerks did not know the rare
-  signs, so the key was probably rebuilt and not captured; the hands are not Viète's. No clerk is named. A hand
-  comparison by a model is weak evidence, so the panels are in `images/` for a palaeographer to judge.
+These are Catholic League political letters from **1593**. Separate preliminary
+Dead Sea Scroll glyph work has not deciphered Cryptic B and is not included here.
 
-Two of his three corrections to the clear text of f. 186r are applied, with one more change of notation
-("[le Legat]": the sign carries the article). His third reading, "en reste" for "icy reste" (l. 12), is noted in
-the reading file.
+## Credits and terms
 
-## Credits
+Upstream code: MIT. Readings, translations, labels, and reports: CC BY 4.0.
+Original showcase and verifier code: MIT. The reader credits the existing English
+translation rather than presenting it as new.
 
-- **Satoshi Tomokiyo** reconstructed the cipher and listed the two letters as undeciphered.
-- **Daniel Bourdeau** (`dbourdeau/cyphersolver`) made the first attempt, identified the leaves and the ground-truth
-  pages, and published notes and labels that this work started from.
-- **Bibliothèque nationale de France / Gallica** provides the page images. Images here are reduced crops with the
-  credit "gallica.bnf.fr / BnF".
-- The work was done by Paolo Rosson with Claude (Anthropic), running as Claude Code with subagents, and with a
-  DGX Spark for training.
+BnF / Gallica manuscript images have separate reuse terms. This showcase adds
+**no manuscript images** and links to the originals. Upstream reduced crops stay
+unchanged. The private Site, full scans, raw notes, access configuration, and
+credentials are outside this candidate.
 
-## Contents
-
-| Folder | Content |
-|---|---|
-| `reading/` | The readings, with the raw machine output in `reading/raw/`, and the comparison of the four letters of 22 July. Also a third leaf in the same cipher, BnF fr. 4715 f. 61, read in full (`fr4715_f61_reading.txt`); Tomokiyo had read five spans of it. |
-| `gold/` | The labelled lines used for training and testing, and our transcriptions of the 1593 decipherments: f. 177-178 (use the file `v2`; the first one has errors) and f. 184 |
-| `evidence/` | Accuracy figures, the 1593 register entries, the work log, and the study of the 1593 decipherer |
-| `prior_art/` | The search for earlier readings |
-| `images/` | Reduced images for reference |
-| `code/` | The scripts as they were used. They are not yet cleaned up. |
-
-## Open points
-
-- A check of both readings by a palaeographer. The model checked every line against the page images; a human has
-  not.
-- The remaining signs and the cover names.
-- The gaps in the search for earlier readings (see "Is the reading new").
-
-The work logs in `evidence/` are the logs as written during the work. They name folders of the working machines
-(for example `prior/bourdeau/`, `tmp/`, `results/`); those folders are not part of this repository. No file from
-another project is included here.
-
-## Licence
-
-Code: MIT. Text: CC BY 4.0. Images: reduced crops from Gallica, under the BnF's conditions of reuse, with the
-credit "gallica.bnf.fr / BnF". Details are in [LICENSE.md](LICENSE.md).
+[Original licenses](LICENSE.md) · [Showcase credits](showcase/ATTRIBUTION.md) ·
+[Verifier credits](contrib/saved-score/CREDITS.md).

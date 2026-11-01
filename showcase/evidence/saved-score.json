@@ -1,0 +1,30 @@
+{
+  "schema": "desportes-public-saved-score-evidence-v1",
+  "upstream_commit": "33c854af9d1a005e2d4fbb034a61c37f3682c6f6",
+  "method": "saved-artifact-edit-v1-portable-1",
+  "run_id": "b7fc904251e08f66bded",
+  "inputs_sha256": {
+    "gold": "7c6ddf401f28041d1746fa4cfd4ac2d0de0143d2963fbc9071d7986a816fa7e6",
+    "machine": "3809eb14cf0e47384376ad972aa192aead79cc50656529ba8085d72a79f0ee7b"
+  },
+  "manifest_sha256": "9d2f080292e85a900f6b1044937c200fd529bf4742e8429e9fd9c94a34fbd4ec",
+  "scorer_sha256": "28ec966bd03b5387fc4898c253b8a92084041b3d1b3fb7bb4b0d8b5421e9c172",
+  "scope": "Saved-artifact agreement on exposed folio179r with a model-assisted reference. No independent manuscript accuracy or proof of blinding. Folios186/189 in this reader are not scored.",
+  "glyph": {
+    "reference_length": 1301,
+    "hypothesis_length": 1300,
+    "edit_errors": 4,
+    "accuracy_percent": 99.69254419677172
+  },
+  "letter": {
+    "reference_length": 1369,
+    "hypothesis_length": 1371,
+    "edit_errors": 23,
+    "accuracy_percent": 98.31994156318481
+  },
+  "coverage": {
+    "excluded_letter_name_placeholders": 4,
+    "name_identity_accuracy": null
+  },
+  "attribution": "Public source texts: Paolo Rosson with Claude (Anthropic), CC BY4.0; independent saved-artifact counter: Reloaded contributors, MIT."
+}

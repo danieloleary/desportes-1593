@@ -1,0 +1,20 @@
+{
+  "schema": "package-inventory-v1",
+  "excludes": [
+    "HASH_MANIFEST.json"
+  ],
+  "files": {
+    "AGENTS.md": "a4a20fff254cc2d2d51ee6ec4b5440a3cc307354321b2b06f0262c21a38ebbda",
+    "CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
+    "CREDITS.md": "73dff3fd09d42368788d4a729fa407325256ebf1e7ccfed0a7ba5ae71a079b6e",
+    "LICENSE": "ee50b9473e44d0f0a3b6738b9c879fe7fe4c26f0dbdb893107e0b2107a5dd62a",
+    "METHOD.md": "a52ac2c80e991bbc9a573a6b6cd3b4b5fce8210830cce39834cd28226031822f",
+    "README.md": "e3e9f1001e762ba4b1a5a4a40cec11c5a4c64df3cc6b553dc866c51ae6c9a528",
+    "UPSTREAM_LICENSE.md": "b3223b3fb33a51f428a3ad2cd69e40d8131b2a78bdcc2f92b9765a784c41a7a9",
+    "inputs/f179r.txt": "7c6ddf401f28041d1746fa4cfd4ac2d0de0143d2963fbc9071d7986a816fa7e6",
+    "inputs/f179r_machine_blind.txt": "3809eb14cf0e47384376ad972aa192aead79cc50656529ba8085d72a79f0ee7b",
+    "manifest.json": "9d2f080292e85a900f6b1044937c200fd529bf4742e8429e9fd9c94a34fbd4ec",
+    "score_saved.py": "28ec966bd03b5387fc4898c253b8a92084041b3d1b3fb7bb4b0d8b5421e9c172",
+    "test_score_saved.py": "9ae245f43550e58698c3a4e1b89e65ed90ae7f39ed110194122a1de30820da14"
+  }
+}
